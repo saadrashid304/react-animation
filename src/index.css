@@ -52,11 +52,11 @@ body {
 }
 
 #hero-image {
-  width: 20rem;
+  width: 34rem;
   max-width: 40%;
   position: absolute;
-  bottom: 10%;
-  left: 25%;
+  bottom: 5%;
+  left: 26%;
   object-fit: cover;
   filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.5));
 }

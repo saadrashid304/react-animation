@@ -7,28 +7,39 @@ import heroImg from "../assets/hero.png";
 export default function WelcomePage() {
   const { scrollY } = useScroll(); // value in pixel
 
+  const yCity = useTransform(scrollY, [0, 250], [0, -100]);
   const opacityCity = useTransform(
     scrollY,
-    [0, 200, 300, 500],
+    [0, 250, 500, 800],
     [1, 0.5, 0.5, 0]
   ); // (value to be transformed, breakpoints, values when breakpoints reached)
+
+  const yHero = useTransform(scrollY, [0, 250], [0, -150]);
+  const opacityHero = useTransform(scrollY, [0, 400, 800], [1, 1, 0]); // (value to be transformed, breakpoints, values when breakpoints reached)
+
+  const yText = useTransform(scrollY, [0, 250, 500, 800], [0, 200, 500, 500]); // (value to be transformed, breakpoints, values when breakpoints reached)
+  const scaleText = useTransform(scrollY, [0, 400], [1, 1.5]);
 
   return (
     <>
       <header id="welcome-header">
-        <motion.div id="welcome-header-content">
+        <motion.div
+          id="welcome-header-content"
+          style={{ scale: scaleText, y: yText }}
+        >
           <h1>Ready for a challenge?</h1>
           <Link id="cta-link" to="/challenges">
             Get Started
           </Link>
         </motion.div>
         <motion.img
-          style={{ opacity: opacityCity }}
+          style={{ opacity: opacityCity, y: yCity }}
           src={cityImg}
           alt="A city skyline touched by sunlight"
           id="city-image"
         />
         <motion.img
+          style={{ opacity: opacityHero, y: yHero }}
           src={heroImg}
           alt="A superhero wearing a cape"
           id="hero-image"
